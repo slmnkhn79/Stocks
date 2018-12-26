@@ -100,7 +100,29 @@
                         </div>
                     </div>
                     <!-- /.panel-heading -->
-                    
+                    <kendo-stockchart>
+                            <kendo-chart-title text="The Boeing Company\nNYSE:BA">
+                            </kendo-chart-title>
+                            <kendo-chart-series>
+                                <kendo-chart-series-item
+                                    type="candlestick"
+                                    [data]="stockdata"
+                                    openField="open"
+                                    closeField="close"
+                                    lowField="low"
+                                    highField="high"
+                                    categoryField="date">
+                                </kendo-chart-series-item>
+                            </kendo-chart-series>
+                            <kendo-chart-navigator>
+                             <kendo-chart-navigator-select [from]="from" [to]="to">
+                             </kendo-chart-navigator-select>
+                              <kendo-chart-navigator-series>
+                                <kendo-chart-navigator-series-item type="area" [data]="stockdata" field="close" categoryField="date">
+                                </kendo-chart-navigator-series-item>
+                             </kendo-chart-navigator-series>
+                            </kendo-chart-navigator>
+                        </kendo-stockchart>
                     <!-- /.panel-body -->
                 </div>
                 
@@ -168,6 +190,7 @@
                         <a href="#" class="btn btn-default btn-block">View All Alerts</a>
                     </div>
                     <!-- /.panel-body -->
+                    
                 </div>
                 <!-- /.panel -->
                 

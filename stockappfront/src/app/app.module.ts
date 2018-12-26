@@ -16,6 +16,10 @@ import { ImportService } from './import/import.service';
 import {MaterialModule} from './material-module';
 import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ChartsModule } from '@progress/kendo-angular-charts';
+import 'hammerjs';
+
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {path:'home', component:HomeComponent},
@@ -44,7 +48,8 @@ const routes: Routes = [
     FormsModule,
     MaterialModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ChartsModule
   ],
   providers: [ImportService],
   entryComponents: [DialogComponent],

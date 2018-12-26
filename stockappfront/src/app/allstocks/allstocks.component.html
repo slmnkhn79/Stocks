@@ -1,1 +1,40 @@
 <app-sidebar></app-sidebar>
+<div id="page-wrapper" style="min-height: 575px;">
+<div class='top'>
+    <span>Stocks Per Page:
+        <select (change) = 'handleSelect($event.target.value)'>
+            <option>5</option>
+            <option selected>10</option>
+            <option>20</option>
+        </select>
+        </span>
+        <input class ='search_box' type='search' (search)='handleSearch($event.target.value)' onfocus="if (this.value == 'search') this.value=''"  size="25" placeholder="Search By Symbol">
+        <button type="button" class="btn btn-danger" (click)="resetView()">Reset</button>
+</div>
+<table class="table table-dark table-hover  ">
+    <tr>
+        <th class ='row-symbol'>Symbol</th>
+        
+        <th class ='row-open'>Date<img class="sort_img" [src]="sortImage"></th>
+        <th class ='row-date'>Open</th>
+        <th class ='row-date'>Close</th>
+        <th class ='row-date'>Low</th>
+        <th class ='row-date'>High</th>
+        <th class ='row-date'>Volume</th>
+    </tr>
+    <tr *ngFor='let stock of stocks; let i = index'>
+        <td class='indent'><a >{{stock.symbol}}</a>  </td>
+        <td class='indent'><a >{{stock.date}}</a>  </td>
+        <td class='center'><a >{{stock.open}}</a>  </td>
+        <td class='center'><a >{{stock.close}}</a>  </td>
+        <td class='center'><a >{{stock.low}}</a>  </td>
+        <td class='center'><a >{{stock.high}}</a>  </td>
+        <td class='center'><a >{{stock.volume}}</a>  </td>
+    </tr>
+</table>
+<div class='bottom'>
+    <a  [className]="(page==0) ? 'hide' : '' " (click)="handlePrev()">Prev<span class="glyphicon glyphicon-chevron-left"></span></a>
+    <span class="bottom_center">Page {{page+1}} of {{numPages}}</span>
+    <a [className]="(page == numPages-1) ? 'hide': '' " (click)='handleNext()' >Next<span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
+</div>
